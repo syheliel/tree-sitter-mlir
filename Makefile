@@ -20,6 +20,7 @@ TS ?= tree-sitter
 # ABI versioning
 SONAME_MAJOR := $(word 1,$(subst ., ,$(VERSION)))
 SONAME_MINOR := $(word 2,$(subst ., ,$(VERSION)))
+TREE_SITTER_ABI_VERSION := 14
 
 # install directory layout
 PREFIX ?= /usr/local
@@ -82,7 +83,7 @@ $(LANGUAGE_NAME).pc: bindings/c/$(LANGUAGE_NAME).pc.in
 		-e 's|@PREFIX@|$(PREFIX)|' $< > $@
 
 $(SRC_DIR)/parser.c: grammar.js
-	$(TS) generate --no-bindings
+	$(TS) generate --no-bindings --abi=$(TREE_SITTER_ABI_VERSION)
 
 install: all
 	install -Dm644 bindings/c/$(LANGUAGE_NAME).h '$(DESTDIR)$(INCLUDEDIR)'/tree_sitter/$(LANGUAGE_NAME).h
@@ -101,7 +102,7 @@ uninstall:
 		'$(DESTDIR)$(PCLIBDIR)'/$(LANGUAGE_NAME).pc
 
 clean:
-	$(RM) $(OBJS) $(LANGUAGE_NAME).pc lib$(LANGUAGE_NAME).a lib$(LANGUAGE_NAME).$(SOEXT)
+	$(RM) $(OBJS) $(LANGUAGE_NAME).pc lib$(LANGUAGE_NAME).a lib$(LANGUAGE_NAME).$(SOEXT) $(SRC_DIR)/parser.c
 
 test:
 	$(TS) test

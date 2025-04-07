@@ -1,4 +1,12 @@
 node_modules/
+corpus_success/
+corpus/
 target/
+knowledge_base/
 build/
 scratch.mlir
+__pycache__/
+src/parser.o
+*.pc
+libtree-sitter-mlir.so
+libtree-sitter-mlir.a
