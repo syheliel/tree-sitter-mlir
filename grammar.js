@@ -13,6 +13,7 @@ const tensor_dialect = require('./dialect/tensor');
 const bufferization_dialect = require('./dialect/bufferization');
 const affine_dialect = require('./dialect/affine');
 const linalg_dialect = require('./dialect/linalg');
+const gpu_dialect = require('./dialect/gpu');
 
 const common = {
   // Top level production:
@@ -423,7 +424,8 @@ const common = {
     $.tensor_dialect,
     $.bufferization_dialect,
     $.affine_dialect,
-    $.linalg_dialect
+    $.linalg_dialect,
+    $.gpu_dialect
   )
 }
 
@@ -447,5 +449,7 @@ module.exports = grammar({
     tensor_dialect,
     bufferization_dialect,
     affine_dialect,
-    linalg_dialect)
+    linalg_dialect,
+    gpu_dialect
+  )
 });
