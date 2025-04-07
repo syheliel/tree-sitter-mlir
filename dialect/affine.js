@@ -8,12 +8,22 @@ module.exports = {
 
     // operation ::= `affine.delinearize_index` $linear_index `into` ` `
     //               `(` $basis `)` attr-dict `:` type($multi_index)
-    seq('affine.delinearlize_index',
+    seq('affine.delinearize_index',
       field('operand', $.value_use), 'into',
-      field('basis', $._value_use_list_parens),
+      field('basis', $._multi_dim_affine_expr_parens),
       field('attributes', optional($.attribute)),
       field('return', $._type_annotation)),
 
+// operation ::= `affine.linearize_index` (`disjoint` $disjoint^)? ` `
+// `[` $multi_index `]` `by`
+// custom<DynamicIndexList>($dynamic_basis, $static_basis, "{}", "::mlir::AsmParser::Delimiter::Paren")
+// attr-dict `:` type($linear_index)
+    seq('affine.linearize_index',
+      field('multi_index', $._multi_dim_affine_expr_sq), 'by',
+      field('basis', $._multi_dim_affine_expr_parens),
+      field('attributes', optional($.attribute)),
+      field('return', $._type_annotation)),
+   
     // operation ::= `affine.dma_start` ssa-use `[` multi-dim-affine-map-of-ssa-ids `]`,
     //               `[` multi-dim-affine-map-of-ssa-ids `]`,
     //               `[` multi-dim-affine-map-of-ssa-ids `]`, ssa-use `:` memref-type

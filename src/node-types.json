@@ -30,6 +30,30 @@
             "named": false
           },
           {
+            "type": "-",
+            "named": false
+          },
+          {
+            "type": "bare_id",
+            "named": true
+          },
+          {
+            "type": "integer_literal",
+            "named": true
+          },
+          {
+            "type": "max",
+            "named": false
+          },
+          {
+            "type": "min",
+            "named": false
+          },
+          {
+            "type": "symbol",
+            "named": false
+          },
+          {
             "type": "value_use",
             "named": true
           }
@@ -342,6 +366,60 @@
         ]
       },
       "multiDimAffineMap": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": "-",
+            "named": false
+          },
+          {
+            "type": "[",
+            "named": false
+          },
+          {
+            "type": "]",
+            "named": false
+          },
+          {
+            "type": "bare_id",
+            "named": true
+          },
+          {
+            "type": "integer_literal",
+            "named": true
+          },
+          {
+            "type": "max",
+            "named": false
+          },
+          {
+            "type": "min",
+            "named": false
+          },
+          {
+            "type": "symbol",
+            "named": false
+          },
+          {
+            "type": "value_use",
+            "named": true
+          }
+        ]
+      },
+      "multi_index": {
         "multiple": true,
         "required": false,
         "types": [
@@ -1775,6 +1853,10 @@
           "named": true
         },
         {
+          "type": "gpu_dialect",
+          "named": true
+        },
+        {
           "type": "linalg_dialect",
           "named": true
         },
@@ -2186,6 +2268,570 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "gpu_dialect",
+    "named": true,
+    "fields": {
+      "arguments": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "type",
+            "named": true
+          },
+          {
+            "type": "value_use",
+            "named": true
+          }
+        ]
+      },
+      "async": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "async",
+            "named": false
+          }
+        ]
+      },
+      "asyncDependencies": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": "[",
+            "named": false
+          },
+          {
+            "type": "]",
+            "named": false
+          },
+          {
+            "type": "value_use",
+            "named": true
+          }
+        ]
+      },
+      "asyncObject": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "<",
+            "named": false
+          },
+          {
+            "type": ">",
+            "named": false
+          },
+          {
+            "type": "from",
+            "named": false
+          },
+          {
+            "type": "into",
+            "named": false
+          },
+          {
+            "type": "to",
+            "named": false
+          },
+          {
+            "type": "type",
+            "named": true
+          },
+          {
+            "type": "value_use",
+            "named": true
+          }
+        ]
+      },
+      "attributes": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "attribute",
+            "named": true
+          }
+        ]
+      },
+      "blocks": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": "=",
+            "named": false
+          },
+          {
+            "type": "blocks",
+            "named": false
+          },
+          {
+            "type": "in",
+            "named": false
+          },
+          {
+            "type": "value_use",
+            "named": true
+          }
+        ]
+      },
+      "body": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "region",
+            "named": true
+          }
+        ]
+      },
+      "clusters": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": "=",
+            "named": false
+          },
+          {
+            "type": "clusters",
+            "named": false
+          },
+          {
+            "type": "in",
+            "named": false
+          },
+          {
+            "type": "value_use",
+            "named": true
+          }
+        ]
+      },
+      "dimension": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "string_literal",
+            "named": true
+          },
+          {
+            "type": "x",
+            "named": false
+          },
+          {
+            "type": "y",
+            "named": false
+          },
+          {
+            "type": "z",
+            "named": false
+          }
+        ]
+      },
+      "dst": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "value_use",
+            "named": true
+          }
+        ]
+      },
+      "dynamicSharedMemorySize": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "dynamic_shared_memory_size",
+            "named": false
+          },
+          {
+            "type": "value_use",
+            "named": true
+          }
+        ]
+      },
+      "dynamicSizes": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": "value_use",
+            "named": true
+          }
+        ]
+      },
+      "hostShared": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "host_shared",
+            "named": false
+          }
+        ]
+      },
+      "kernel": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "kernel",
+            "named": false
+          },
+          {
+            "type": "string_literal",
+            "named": true
+          },
+          {
+            "type": "symbol_ref_id",
+            "named": true
+          }
+        ]
+      },
+      "kernelOperands": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": "args",
+            "named": false
+          },
+          {
+            "type": "value_use",
+            "named": true
+          }
+        ]
+      },
+      "memoryAttribution": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "attribute",
+            "named": true
+          }
+        ]
+      },
+      "memref": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "value_use",
+            "named": true
+          }
+        ]
+      },
+      "mode": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "string_literal",
+            "named": true
+          }
+        ]
+      },
+      "offloadingHandler": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "<",
+            "named": false
+          },
+          {
+            "type": ">",
+            "named": false
+          },
+          {
+            "type": "attribute",
+            "named": true
+          }
+        ]
+      },
+      "offset": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "value_use",
+            "named": true
+          }
+        ]
+      },
+      "operands": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "type",
+            "named": true
+          },
+          {
+            "type": "value_use",
+            "named": true
+          }
+        ]
+      },
+      "return": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "from",
+            "named": false
+          },
+          {
+            "type": "into",
+            "named": false
+          },
+          {
+            "type": "to",
+            "named": false
+          },
+          {
+            "type": "type",
+            "named": true
+          }
+        ]
+      },
+      "src": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "value_use",
+            "named": true
+          }
+        ]
+      },
+      "symName": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "symbol_ref_id",
+            "named": true
+          }
+        ]
+      },
+      "symbolOperands": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": "[",
+            "named": false
+          },
+          {
+            "type": "]",
+            "named": false
+          },
+          {
+            "type": "value_use",
+            "named": true
+          }
+        ]
+      },
+      "targets": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "attribute",
+            "named": true
+          }
+        ]
+      },
+      "threads": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": "=",
+            "named": false
+          },
+          {
+            "type": "in",
+            "named": false
+          },
+          {
+            "type": "threads",
+            "named": false
+          },
+          {
+            "type": "value_use",
+            "named": true
+          }
+        ]
+      },
+      "upperBound": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "upper_bound",
+            "named": false
+          },
+          {
+            "type": "value_use",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "value_use",
+            "named": true
+          }
+        ]
+      },
+      "values": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "type",
+            "named": true
+          },
+          {
+            "type": "value_use",
+            "named": true
+          }
+        ]
+      },
+      "width": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "value_use",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -5804,7 +6450,7 @@
     "named": false
   },
   {
-    "type": "affine.delinearlize_index",
+    "type": "affine.delinearize_index",
     "named": false
   },
   {
@@ -5821,6 +6467,10 @@
   },
   {
     "type": "affine.if",
+    "named": false
+  },
+  {
+    "type": "affine.linearize_index",
     "named": false
   },
   {
@@ -5865,6 +6515,10 @@
   },
   {
     "type": "affine_set",
+    "named": false
+  },
+  {
+    "type": "args",
     "named": false
   },
   {
@@ -6064,6 +6718,10 @@
     "named": false
   },
   {
+    "type": "async",
+    "named": false
+  },
+  {
     "type": "atomic_rmw_attr",
     "named": true
   },
@@ -6074,6 +6732,10 @@
   {
     "type": "bare_id",
     "named": true
+  },
+  {
+    "type": "blocks",
+    "named": false
   },
   {
     "type": "bool_literal",
@@ -6097,6 +6759,10 @@
   },
   {
     "type": "builtin.unrealized_conversion_cast",
+    "named": false
+  },
+  {
+    "type": "by",
     "named": false
   },
   {
@@ -6128,6 +6794,10 @@
     "named": false
   },
   {
+    "type": "clusters",
+    "named": false
+  },
+  {
     "type": "comment",
     "named": true
   },
@@ -6149,6 +6819,10 @@
   },
   {
     "type": "do",
+    "named": false
+  },
+  {
+    "type": "dynamic_shared_memory_size",
     "named": false
   },
   {
@@ -6196,7 +6870,79 @@
     "named": false
   },
   {
+    "type": "gpu.alloc",
+    "named": false
+  },
+  {
+    "type": "gpu.barrier",
+    "named": false
+  },
+  {
+    "type": "gpu.block_dim",
+    "named": false
+  },
+  {
+    "type": "gpu.block_id",
+    "named": false
+  },
+  {
+    "type": "gpu.dealloc",
+    "named": false
+  },
+  {
+    "type": "gpu.func",
+    "named": false
+  },
+  {
+    "type": "gpu.grid_dim",
+    "named": false
+  },
+  {
+    "type": "gpu.launch",
+    "named": false
+  },
+  {
+    "type": "gpu.launch_func",
+    "named": false
+  },
+  {
+    "type": "gpu.memcpy",
+    "named": false
+  },
+  {
+    "type": "gpu.module",
+    "named": false
+  },
+  {
+    "type": "gpu.return",
+    "named": false
+  },
+  {
+    "type": "gpu.shuffle",
+    "named": false
+  },
+  {
+    "type": "gpu.sync",
+    "named": false
+  },
+  {
+    "type": "gpu.thread_id",
+    "named": false
+  },
+  {
+    "type": "gpu.wait",
+    "named": false
+  },
+  {
+    "type": "gpu.yield",
+    "named": false
+  },
+  {
     "type": "high",
+    "named": false
+  },
+  {
+    "type": "host_shared",
     "named": false
   },
   {
@@ -6241,6 +6987,10 @@
   },
   {
     "type": "iter_args",
+    "named": false
+  },
+  {
+    "type": "kernel",
     "named": false
   },
   {
@@ -6996,6 +7746,10 @@
     "named": false
   },
   {
+    "type": "threads",
+    "named": false
+  },
+  {
     "type": "to",
     "named": false
   },
@@ -7017,6 +7771,10 @@
   },
   {
     "type": "unrealized_conversion_cast",
+    "named": false
+  },
+  {
+    "type": "upper_bound",
     "named": false
   },
   {
@@ -7169,6 +7927,14 @@
   },
   {
     "type": "x",
+    "named": false
+  },
+  {
+    "type": "y",
+    "named": false
+  },
+  {
+    "type": "z",
     "named": false
   },
   {

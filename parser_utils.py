@@ -9,7 +9,7 @@ Language.build_library(
 )
 
 # 创建MLIR语言和解析器
-MLIR_LANGUAGE = Language('./libtree-sitter-mlir.so', 'mlir')
+MLIR_LANGUAGE = Language('./build/my-languages.so', 'mlir')
 mlir_parser = Parser()
 mlir_parser.set_language(MLIR_LANGUAGE)
 

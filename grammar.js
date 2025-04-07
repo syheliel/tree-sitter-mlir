@@ -77,7 +77,7 @@ const common = {
   bare_id: $ => token(seq(/[a-zA-Z_]/, repeat(/[a-zA-Z0-9_$.]/))),
   _alias_or_dialect_id: $ => token(seq(/[a-zA-Z_]/, repeat(/[a-zA-Z0-9_$]/))),
   bare_id_list: $ => seq($.bare_id, repeat(seq(',', $.bare_id))),
-  value_use: $ => seq('%', $._suffix_id),
+  value_use: $ => prec(1, seq('%', $._suffix_id)),
   _suffix_id: $ => token(seq(choice(repeat1(/[0-9]/),
     seq(/[a-zA-Z_$.-]/, repeat(/[a-zA-Z0-9_$.-]/))),
     optional(seq(choice(':', '#'), repeat1(/[0-9]/))))),
@@ -110,7 +110,7 @@ const common = {
       optional($._region_list), optional($.attribute), ':', $.function_type),
   // custom-operation rule is defined later in the grammar, post the generic.
   _op_result_list: $ => seq($.op_result, repeat(seq(',', $.op_result)), '='),
-  op_result: $ => seq($.value_use, optional(seq(':', $.integer_literal))),
+  op_result: $ => prec.left(seq($.value_use, optional(seq(':', $.integer_literal)))),
   _successor_list: $ => seq('[', $.successor, repeat(seq(',', $.successor)),
     ']'),
   successor: $ => seq($.caret_id, optional($._value_arg_list)),
@@ -229,7 +229,7 @@ const common = {
   integer_type: $ => token(seq(choice('si', 'ui', 'i'), /[1-9]/, repeat(/[0-9]/))),
   float_type: $ => token(choice('f16', 'f32', 'f64', 'f80', 'f128', 'bf16',
     'f8E4M3FN', 'f8E5M2')),
-  index_type: $ => token('index'),
+  index_type: $ => token(prec(1, 'index')),
   none_type: $ => token('none'),
   complex_type: $ => seq(token('complex'), '<', $._prim_type, '>'),
   _prim_type: $ => choice($.integer_type, $.float_type, $.index_type,
@@ -434,7 +434,8 @@ module.exports = grammar({
   extras: $ => [/\s/, $.comment],
   conflicts: $ => [
     [$._static_dim_list, $._static_dim_list],
-    [$.dictionary_attribute, $.region]
+    [$.dictionary_attribute, $.region],
+    [$.gpu_dialect]
   ],
   rules: Object.assign(common,
     builtin_dialect,

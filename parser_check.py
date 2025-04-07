@@ -1,14 +1,8 @@
 from tree_sitter import Language, Parser
 from pathlib import Path
-Language.build_library(
-    'build/my-languages.so',
-    ['./']
-)
+from util import get_mlir_parser
 
-lang = Language('build/my-languages.so', 'mlir')
-parser = Parser()
-parser.set_language(lang)
-
+parser = get_mlir_parser()
 seeds_path = list(Path('./corpus_success').glob('*.mlir'))
 total_count = len(seeds_path)
 success_count = 0

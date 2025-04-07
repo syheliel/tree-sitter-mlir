@@ -61,7 +61,7 @@ ifneq ($(filter $(shell uname),FreeBSD NetBSD DragonFly),)
 	PCLIBDIR := $(PREFIX)/libdata/pkgconfig
 endif
 
-all: lib$(LANGUAGE_NAME).a lib$(LANGUAGE_NAME).$(SOEXT) $(LANGUAGE_NAME).pc
+all: lib$(LANGUAGE_NAME).a lib$(LANGUAGE_NAME).$(SOEXT) $(LANGUAGE_NAME).pc parser.c
 
 lib$(LANGUAGE_NAME).a: $(OBJS)
 	$(AR) $(ARFLAGS) $@ $^
@@ -82,8 +82,10 @@ $(LANGUAGE_NAME).pc: bindings/c/$(LANGUAGE_NAME).pc.in
 		-e 's|=$(PREFIX)|=$${prefix}|' \
 		-e 's|@PREFIX@|$(PREFIX)|' $< > $@
 
-$(SRC_DIR)/parser.c: grammar.js
+parser.c: grammar.js
 	$(TS) generate --no-bindings --abi=$(TREE_SITTER_ABI_VERSION)
+
+$(SRC_DIR)/%.o: $(SRC_DIR)/parser.c
 
 install: all
 	install -Dm644 bindings/c/$(LANGUAGE_NAME).h '$(DESTDIR)$(INCLUDEDIR)'/tree_sitter/$(LANGUAGE_NAME).h
